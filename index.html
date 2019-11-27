@@ -2,18 +2,59 @@
 <html>
     <head>
         <script src="https://aframe.io/releases/0.2.0/aframe.js"></script>
-    	
+    	<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"></script>
     </head>
     
     <body>
     	
-
-        <a-scene >
+		
+        <a-scene physics>
+		
+			<a-sphere color="#0000AA"
+                  radius="0.1"
+                  position="0 2.25 0">
+			<a-animation attribute="position"
+                         from="0 5 0"
+                         to="2 0 0"
+                         repeat="indefinite"
+                         
+                         dur="3000"
+                         easing="ease-in">
+            </a-animation>
+            
+        </a-sphere>
+		<a-sphere color="#0000AA"
+                  radius="0.1"
+                  position="0 2.25 0">
+			<a-animation attribute="position"
+                         from="-2 5 0"
+                         to="-2 0 0"
+                         repeat="indefinite"
+                         
+                         dur="3000"
+                         easing="ease-in">
+            </a-animation>
+			
+            
+        </a-sphere>
+		<a-sphere color="#0000AA"
+                  radius="0.1"
+                  position="0 2.25 0">
+			<a-animation attribute="position"
+                         from="2 5 0"
+                         to="-4 0 0"
+                         repeat="indefinite"
+                         
+                         dur="3000"
+                         easing="ease-in">
+            </a-animation>
+			
+            
+        </a-sphere>
         	<a-sky color="#000000"></a-sky>
-        	<a-plane  color="#b1c708" position="0 0 0" rotation="-90 0 0" width="30" height="30" color="#faed00"></a-plane>
+        	<a-plane  color="#b1c708" position="0 0 0" rotation="-90 0 0" width="30" height="30" color="#faed00" ></a-plane>
         	<a-entity color="#AD1717" position="0 0 0" geometry="primitive: cone; radiusBottom: 1; radiusTop: 0.3"></a-entity>
-            <a-entity color="#ad1717" position="7 0 0" geometry="primitive: cone; radiusBottom: 1; radiusTop: 0.3"></a-entity>
-            <a-entity color="#ad1717" position="-7 0 0" geometry="primitive: cone; radiusBottom: 1; radiusTop:0.3"></a-entity>
+            
             
         </a-scene>
     </body>
