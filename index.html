@@ -7,61 +7,25 @@
     </head>
     
     <body>
-    	<a-assets><img id="moon-sky" src="moon-sky.jpg"></a-assets>
+    	
+        <a-scene physics>		
 		<a-assets>
+                <img id="moon-sky" src="moon-sky.jpg">
                 <img id="floor" src="floor.jpg">
                 <img id="floor" src="floor-M.jpg">
+                <a-asset-item id="bazooka-o" src="cannon/canon.obj"></a-asset-item>
+                <a-asset-item id="bazooka-m" src="cannon/canon.mtl"></a-asset-item>
+                <a-asset-item id="missil" src="missile/scene.gltf"></a-asset-item>
             </a-assets>
-        <a-scene physics>
-		
-			<a-sphere color="#0000AA"
-                  radius="0.1"
-                  position="0 2.25 0">
-			<a-animation attribute="position"
-                         from="0 5 0"
-                         to="2 0 0"
-                         repeat="indefinite"
-                         
-                         dur="3000"
-                         easing="ease-in">
-            </a-animation>
             
-        </a-sphere>
-		<a-sphere color="#0000AA"
-                  radius="0.1"
-                  position="0 2.25 0">
-			<a-animation attribute="position"
-                         from="-2 5 0"
-                         to="-2 0 0"
-                         repeat="indefinite"
-                         
-                         dur="3000"
-                         easing="ease-in">
-            </a-animation>
 			
-            
-        </a-sphere>
-		<a-sphere color="#0000AA"
-                  radius="0.1"
-                  position="0 2.25 0">
-			<a-animation attribute="position"
-                         from="2 5 0"
-                         to="-4 0 0"
-                         repeat="indefinite"
-                         
-                         dur="3000"
-                         easing="ease-in">
-            </a-animation>
-			
-            
-        </a-sphere>
 		
         	<a-sky src="#moon-sky"
                    rotation="0 -80 -50"></a-sky>
         	
-        	<a-entity color="#AD1717" position="0 0 0" geometry="primitive: cone; radiusBottom: 1; radiusTop: 0.3"></a-entity>
-            <a-entity position="0 0 6">
-                <a-camera user-height="0.5"
+        	
+            <a-entity position="0 0 8">
+                <a-camera user-height="1.6"
                           active="true">
                 </a-camera>
             </a-entity>
@@ -71,18 +35,59 @@
                                normal-map: #floor-M;
                                normal-texture-repeat: 2000 2000"
                      rotation="-90 0 0"
-                     scale="1000 1000 1">
-        </a-scene>
-    </body>
-</html>
-
-			
-            
-        </a-sphere>
-        	<a-sky color="#000000"></a-sky>
-        	<a-plane  color="#b1c708" position="0 0 0" rotation="-90 0 0" width="30" height="30" color="#faed00" ></a-plane>
-        	<a-entity color="#AD1717" position="0 0 0" geometry="primitive: cone; radiusBottom: 1; radiusTop: 0.3"></a-entity>
-            
+                     scale="1000 1000 1"></a-plane>
+            <a-box color="F9F2F0"
+                   width="1"
+                   height="0.2"
+                   depth="0.1"
+                   position="0 0 3"><a-animation attribute="position"
+                         from="-2 1 2"
+                         to="2 1 2"
+                         repeat="indefinite"
+                         direction="alternate"
+                         dur="3000"
+                         easing="ease-out">
+            </a-animation>
+            </a-box>
+            <a-entity obj-model="obj: #bazooka-o; mtl: #bazooka-m"
+                      scale="0.1 0.1 0.1"
+                      position="0 0.5 5.3"
+                      rotation="-90 0 100">
+            </a-entity>
+            <a-entity gltf-model="#missil"
+                      scale="0.02 0.02 0.02" 
+                      rotation="0 0 -90"
+                      position="5 15 -10">
+            <a-animation attribute="position"
+                         from="5 15 -10"
+                         to="5 -5 -10"
+                         repeat="indefinite"
+                         
+                         dur="3000"
+                         easing="ease-out">
+            </a-animation></a-entity>
+            <a-entity gltf-model="#missil"
+                      scale="0.02 0.02 0.02" 
+                      rotation="0 0 -90"
+                      position="0 15 -10"><a-animation attribute="position"
+                         from="0 15 -10"
+                         to="0 -5 -10"
+                         repeat="indefinite"
+                         
+                         dur="3000"
+                         easing="ease-out">
+            </a-animation></a-entity>
+             <a-entity gltf-model="#missil"
+                      scale="0.02 0.02 0.02" 
+                      rotation="0 0 -90"
+                      position="-5 15 -10"><a-animation attribute="position"
+                         from="-5 15 -10"
+                         to="-5 -5 -10"
+                         repeat="indefinite"
+                         
+                         dur="3000"
+                         easing="ease-out">
+            </a-animation></a-entity>
             
         </a-scene>
     </body>
