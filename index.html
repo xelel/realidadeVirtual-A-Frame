@@ -9,6 +9,7 @@
     <body>
     	
         <a-scene physics>		
+
 		<a-assets>
                 <img id="moon-sky" src="moon-sky.jpg">
                 <img id="floor" src="floor.jpg">
@@ -16,6 +17,14 @@
                 <a-asset-item id="bazooka-o" src="cannon/canon.obj"></a-asset-item>
                 <a-asset-item id="bazooka-m" src="cannon/canon.mtl"></a-asset-item>
                 <a-asset-item id="missil" src="missile/scene.gltf"></a-asset-item>
+
+                <a-asset-item id="cidade1" src="city/scene.gltf"></a-asset-item>
+                <a-asset-item id="cidade2" src="city2/scene.gltf"></a-asset-item>
+                 <a-asset-item id="cidade3" src="city3/scene.gltf"></a-asset-item>
+                <a-asset-item id="cidade4" src="city4/scene.gltf"></a-asset-item>
+             <a-asset-item id="cidade5" src="city5/scene.gltf"></a-asset-item>
+            <a-asset-item id="cidade6" src="city6/scene.gltf"></a-asset-item>
+
             </a-assets>
             
 			
@@ -24,11 +33,7 @@
                    rotation="0 -80 -50"></a-sky>
         	
         	
-            <a-entity position="0 0 8">
-                <a-camera user-height="1.6"
-                          active="true">
-                </a-camera>
-            </a-entity>
+
             <a-plane material="color: #FFFFFF;
                                src: #floor;
                                repeat: 2000 2000;
@@ -36,59 +41,75 @@
                                normal-texture-repeat: 2000 2000"
                      rotation="-90 0 0"
                      scale="1000 1000 1"></a-plane>
-            <a-box color="F9F2F0"
-                   width="1"
-                   height="0.2"
-                   depth="0.1"
-                   position="0 0 3"><a-animation attribute="position"
-                         from="-2 1 2"
-                         to="2 1 2"
-                         repeat="indefinite"
-                         direction="alternate"
-                         dur="3000"
-                         easing="ease-out">
-            </a-animation>
-            </a-box>
-            <a-entity obj-model="obj: #bazooka-o; mtl: #bazooka-m"
-                      scale="0.1 0.1 0.1"
-                      position="0 0.5 5.3"
+
+            
+        <!-- Camera -->
+		
+        <a-camera position="0 0.8 10"
+                  user-height="0.8"
+                          active="true">
+			<a-entity cursor position="0 0 -20"
+					  geometry="primitive: box; 
+                   width:1.5;
+                   height:0.2;
+                   depth:1;"
+                   material="color: #ffffff;">
+			</a-entity>
+            
+		</a-camera>
+            
+        <a-entity obj-model="obj: #bazooka-o; mtl: #bazooka-m"
+                      scale="0.07 0.07 0.07"
+                      position="0 0.5 8.4"
                       rotation="-90 0 100">
             </a-entity>
-            <a-entity gltf-model="#missil"
-                      scale="0.02 0.02 0.02" 
-                      rotation="0 0 -90"
-                      position="5 15 -10">
-            <a-animation attribute="position"
-                         from="5 15 -10"
-                         to="5 -5 -10"
-                         repeat="indefinite"
-                         
-                         dur="3000"
-                         easing="ease-out">
-            </a-animation></a-entity>
-            <a-entity gltf-model="#missil"
-                      scale="0.02 0.02 0.02" 
-                      rotation="0 0 -90"
-                      position="0 15 -10"><a-animation attribute="position"
-                         from="0 15 -10"
-                         to="0 -5 -10"
-                         repeat="indefinite"
-                         
-                         dur="3000"
-                         easing="ease-out">
-            </a-animation></a-entity>
+            
+              
+            
              <a-entity gltf-model="#missil"
                       scale="0.02 0.02 0.02" 
                       rotation="0 0 -90"
                       position="-5 15 -10"><a-animation attribute="position"
                          from="-5 15 -10"
                          to="-5 -5 -10"
-                         repeat="indefinite"
+
                          
                          dur="3000"
                          easing="ease-out">
             </a-animation></a-entity>
             
+        
+        <a-entity gltf-model="#missil"
+                      scale="0.02 0.02 0.02" 
+                      rotation="0 0 -90"
+                      position="0 25 -20"><a-animation attribute="position"
+                         from="0 25 -20"
+                         to="0 -5 -20"
+                         repeat="indefinite"
+                         
+                         dur="3000"
+                         easing="ease-out">
+            </a-animation></a-entity>
+             
+        
+        <a-entity gltf-model="#missil"
+                      scale="0.02 0.02 0.02" 
+                      rotation="0 0 -90"
+                      position="-5 15 -20"><a-animation attribute="position"
+                         from="-5 15 -20"
+                         to="-5 -5 -20"
+                         repeat="indefinite"
+                         
+                         dur="3000"
+                         easing="ease-out">
+            </a-animation></a-entity>
+            <a-entity position="-46 0 -20" gltf-model="#cidade1" scale="0.06 0.08 0.06" ></a-entity>
+            <a-entity position="-30 0 -20" gltf-model="#cidade2" scale="0.06 0.08 0.06" ></a-entity>
+            <a-entity position="-11 1 -20" gltf-model="#cidade3" scale="0.006 0.008 0.006" ></a-entity>
+            <a-entity position="11 0 -20" gltf-model="#cidade4" scale="0.004 0.007 0.006" ></a-entity>
+            <a-entity position="33 2 -20" gltf-model="#cidade5" scale="2 4 -3" ></a-entity>
+            <a-entity position="46 0.5 -20" gltf-model="#cidade6" scale="0.004 0.004 0" ></a-entity>
         </a-scene>
     </body>
 </html>
+
