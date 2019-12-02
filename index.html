@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script src="https://aframe.io/releases/0.7.0/aframe.js"></script>
-    	<script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"></script>
         
+        <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
+        <!-- ******** NEW EVENT-SET COMPONENT VERSION FOR A-FRAME v0.9.2 ******** -->
+        <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
+        <!-- ******** NEW SUPER-HANDS COMPONENT VERSION FOR A-FRAME v0.9.2 ******** -->
+        <!-- ******** With v3.0.0 you need to serve progressive-controls yourself ******** -->
+        <script src="https://unpkg.com/super-hands@3.0.0/dist/super-hands.min.js"></script>
+        <script src="js/progressive-controls.js"></script>
+        <!-- ******** THE PHYSICS SYYSTEM HAS BEEN ORGANISED IN A SPECIFIC COMPONENT (no more aframe-extras) ******** -->
+        <!-- ******** You can find out more visiting the repo here: https://github.com/donmccurdy/aframe-physics-system ******** -->
+        <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
     </head>
-    
     <body>
     	
-        <a-scene physics>		
+        <a-scene physics="gravity: -9.8">		
 
 		<a-assets>
                 <img id="moon-sky" src="moon-sky.jpg">
@@ -24,7 +31,6 @@
                 <a-asset-item id="cidade4" src="city4/scene.gltf"></a-asset-item>
              <a-asset-item id="cidade5" src="city5/scene.gltf"></a-asset-item>
             <a-asset-item id="cidade6" src="city6/scene.gltf"></a-asset-item>
-
             </a-assets>
             
 			
@@ -40,76 +46,87 @@
                                normal-map: #floor-M;
                                normal-texture-repeat: 2000 2000"
                      rotation="-90 0 0"
-                     scale="1000 1000 1"></a-plane>
+                     scale="1000 1000 1" static-body></a-plane>
 
             
         <!-- Camera -->
 		
-        <a-camera position="0 0.8 10"
+        <a-camera position="0 1.3 10"
                   user-height="0.8"
                           active="true">
-			<a-entity cursor position="0 0 -20"
+			<a-entity cursor position="0 1.8 -20"
 					  geometry="primitive: box; 
                    width:1.5;
                    height:0.2;
                    depth:1;"
-                   material="color: #ffffff;">
+                    material="color: red;opacity:0.5;  "
+                    rotation="0 0 -90";></a-entity>
+                <a-entity cursor position="0 1.8 -20" 
+                geometry="primitive: box; 
+                   width:1.5;
+                   height:0.2;
+                   depth:1;"
+                   material="color: red;opacity:0.5;"
+                    >
+			</a-entity>
+             <a-entity cursor position="0 1.8 -20" 
+                geometry="primitive: circle; 
+                   width:1.5;
+                   height:0.2;
+                   depth:1;"
+                   material="color: #ffffff;opacity:0.3;"
+                    shader="flat;"
+                   
+                    >
 			</a-entity>
             
 		</a-camera>
-            
+            <!--morteiro -->
         <a-entity obj-model="obj: #bazooka-o; mtl: #bazooka-m"
                       scale="0.07 0.07 0.07"
-                      position="0 0.5 8.4"
+                      position="0 0.5 9"
                       rotation="-90 0 100">
             </a-entity>
-            
-              
-            
-             <a-entity gltf-model="#missil"
-                      scale="0.02 0.02 0.02" 
-                      rotation="0 0 -90"
-                      position="-5 15 -10"><a-animation attribute="position"
-                         from="-5 15 -10"
-                         to="-5 -5 -10"
-
-                         
-                         dur="3000"
-                         easing="ease-out">
-            </a-animation></a-entity>
-            
-        
-        <a-entity gltf-model="#missil"
-                      scale="0.02 0.02 0.02" 
-                      rotation="0 0 -90"
-                      position="0 25 -20"><a-animation attribute="position"
-                         from="0 25 -20"
-                         to="0 -5 -20"
-                         repeat="indefinite"
-                         
-                         dur="3000"
-                         easing="ease-out">
-            </a-animation></a-entity>
              
+          <a-sphere color="#00AA00" radius="0.5" position="-1 40 -20" 
+                      dynamic-body="linearDamping: 0.05; mass: 1" repeat="indefinite">
+            </a-sphere>
+              
+            <!-- Como disse o marinnho: Mini missil aleatorio  -->
+           
         
         <a-entity gltf-model="#missil"
-                      scale="0.02 0.02 0.02" 
+                      scale="0.02 0.04 0.04" 
                       rotation="0 0 -90"
-                      position="-5 15 -20"><a-animation attribute="position"
-                         from="-5 15 -20"
-                         to="-5 -5 -20"
-                         repeat="indefinite"
-                         
-                         dur="3000"
-                         easing="ease-out">
-            </a-animation></a-entity>
-            <a-entity position="-46 0 -20" gltf-model="#cidade1" scale="0.06 0.08 0.06" ></a-entity>
-            <a-entity position="-30 0 -20" gltf-model="#cidade2" scale="0.06 0.08 0.06" ></a-entity>
-            <a-entity position="-11 1 -20" gltf-model="#cidade3" scale="0.006 0.008 0.006" ></a-entity>
-            <a-entity position="11 0 -20" gltf-model="#cidade4" scale="0.004 0.007 0.006" ></a-entity>
-            <a-entity position="33 2 -20" gltf-model="#cidade5" scale="2 4 -3" ></a-entity>
-            <a-entity position="46 0.5 -20" gltf-model="#cidade6" scale="0.004 0.004 0" ></a-entity>
+                      position="-5 40 -20"
+                        animation="property:position;
+                                   from:0 40 -20;
+                                   to:10 -5 -20;
+                                    loop: true;
+                                    
+                                    dur: 3500;
+                                    easing: linear"
+                        event-set__tarvis="_event: click; visible: false;">
+                    ></a-entity>
+            
+            <!-- Cidades -->
+            <a-box color="#FFFFFF"
+                   width="10"
+                   height="10"
+                   depth="5" 
+                   position="-5 1 -20;"
+                   opacity="0.5" static-body><a-entity position="0 0 0" gltf-model="#cidade3" scale="0.006 0.008 0.006" ></a-entity>
+            </a-box>
+                 
+            <a-entity >
+            <a-entity position="-35 -0.5 -20" geometry="primitive:box" gltf-model="#cidade1" scale="0.08 0.08 0.09" ></a-entity>
+            </a-entity>
+            
+            <a-entity position="-23 0 -20" gltf-model="#cidade2" scale="0.06 0.08 0.06" ></a-entity>
+            
+            <a-entity position="5 0 -20" gltf-model="#cidade4" scale="0.004 0.007 0.006" ></a-entity>
+            <a-entity position="23 1.7 -20" gltf-model="#cidade5" scale="2 4 -3" ></a-entity>
+            <a-entity position="40 0.1 -20" gltf-model="#cidade6" scale="0.003 0.004 0.004" ></a-entity>
         </a-scene>
     </body>
 </html>
-
